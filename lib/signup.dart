@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use, body_might_complete_normally_nullable
+// ignore_for_file: deprecated_member_use, body_might_complete_normally_nullable, unused_local_variable
 
 import 'package:flutter/material.dart';
 import 'package:login_page_day_23/login.dart';
@@ -9,22 +9,9 @@ class SignupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 0,
-        brightness: Brightness.light,
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.arrow_back_ios,
-            size: 20,
-            color: Colors.black,
-          ),
-        ),
+        title: const Text("Signup page"),
+        backgroundColor: Colors.lightGreen,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -105,25 +92,24 @@ class SignupPage extends StatelessWidget {
                               return 'Password is required';
                           },
                         )),
-                    SizedBox(height: 10.0),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        new MaterialButton(
-                          onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              final Future<ConfirmAction?> action =
-                                  await _asyncConfirmDialog(context);
-                              print("Confirm Action $action");
-                              const Text(
-                                "Create",
-                                style: TextStyle(fontSize: 50.0),
-                              );
-                            }
-                            ;
-                          },
-                        ),
-                      ],
+                    SizedBox(height: 20.0),
+                    MaterialButton(
+                      minWidth: 200.0,
+                      height: 40,
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate())
+                          final Future<ConfirmAction?> action =
+                              await _asyncConfirmDialog(context);
+                        print("Confirm Action");
+                        return;
+                      },
+                      shape: RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.black),
+                          borderRadius: BorderRadius.circular(50)),
+                      child: const Text(
+                        "Create",
+                        style: TextStyle(fontSize: 20.0),
+                      ),
                     ),
                   ],
                 ),
@@ -145,10 +131,10 @@ Future<Future<ConfirmAction?>> _asyncConfirmDialog(BuildContext context) async {
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text('Successfuly created!'),
-        content: const Text('This will provide you queue number'),
+        content: const Text('You can now log in'),
         actions: <Widget>[
           MaterialButton(
-            child: const Text('Submit'),
+            child: const Text('OK'),
             onPressed: () {
               Navigator.push(context,
                   MaterialPageRoute(builder: (context) => LoginPage()));

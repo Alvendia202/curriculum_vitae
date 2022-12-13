@@ -52,8 +52,8 @@ class HomePage extends StatelessWidget {
               Column(
                 children: <Widget>[
                   MaterialButton(
-                      minWidth: 300.0,
-                      height: 60,
+                      minWidth: 200.0,
+                      height: 40,
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -81,10 +81,9 @@ class HomePage extends StatelessWidget {
                           left: BorderSide(color: Colors.black),
                           right: BorderSide(color: Colors.black),
                         )),
-                  
                     child: MaterialButton(
-                      minWidth: 300.0,
-                      height: 60,
+                      minWidth: 200.0,
+                      height: 40,
                       onPressed: () {
                         Navigator.push(
                             context,
@@ -204,7 +203,8 @@ class SecondRoute extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, '/third');
-                }), // ElevatedButton
+                }),
+            SizedBox(height: 10.0), // ElevatedButton
             TextButton.icon(
                 label: Text(
                   'Professional background',
@@ -218,7 +218,23 @@ class SecondRoute extends StatelessWidget {
                 ),
                 onPressed: () {
                   Navigator.pushNamed(context, '/fourth');
-                }) // ElevatedButton
+                }),
+            SizedBox(height: 30.0),
+            TextButton.icon(
+                label: Text(
+                  'LOGOUT',
+                  style: TextStyle(
+                    color: Colors.black87,
+                  ),
+                ),
+                icon: Icon(
+                  Icons.logout_rounded,
+                  color: Colors.lightGreen,
+                ),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/fourth');
+                })
+            // ElevatedButton
           ],
         ),
       ),
